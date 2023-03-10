@@ -1,0 +1,962 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Inter, sans-serif;
+  scroll-behavior: smooth;
+}
+
+:root {
+  --primary-bg: #170f23;
+  --menu-side-bg: #231b2e;
+  --music-play-bg: #120c1c;
+  --border-layout: hsla(0, 0%, 100%, 0.1);
+  --border-divide-element: rgb(47, 47, 77);
+  --green-banana: #62c06e;
+  --green-color: #2e8b57;
+  --dark-green: #246e44;
+  --dark-cyan: #109db6;
+  --dark-blue: #0000d8;
+  --none-active-color: #4c5262;
+  --active-color: #36e2ec;
+  --pink-color: #fc5c7d;
+  --blue-color: #6a82fb;
+  --silver-color: #c0c0c0;
+  --text-color: #fff;
+  --sub-text-color: #9a9798;
+  --orange-color: #fa8b26;
+  --yellow-color: #f9ef23;
+  --blue-violet: #a742c6;
+  --linear-gradient-bg: linear-gradient(180deg, #740091, #2d1a4c);
+  --theme-modal-bg: #432275;
+}
+
+.app {
+  width: 100%;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  flex-wrap: wrap;
+  overflow: hidden;
+}
+.app .app-menu {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border: 1px solid var(--border-layout);
+  background: var(--menu-side-bg);
+}
+.app .app-menu .active-menu {
+  transition: 1s;
+}
+.app .app-menu .menu-block {
+  padding: 10px 15px;
+}
+.app .app-menu .menu-block .exit-menu {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  color: var(--text-color);
+  padding: 10px;
+  display: none;
+}
+.app .app-menu .menu-block .exit-menu i {
+  font-size: 28px;
+}
+.app .app-menu .menu-block .menu__logos {
+  height: 10%;
+  display: flex;
+  align-items: baseline;
+}
+.app .app-menu .menu-block .menu__logos .menu__logos--icon {
+  width: 40px;
+}
+.app .app-menu .menu-block .menu__logos .menu__logos--logo {
+  width: 120px;
+  margin-left: 15px;
+}
+.app .app-menu .menu-block .menu__playList {
+  height: 25%;
+  padding: 15px 0;
+}
+.app .app-menu .menu-block .menu__playList .menu__playList--label {
+  display: flex;
+  padding: 8px 0;
+  color: var(--yellow-color);
+  cursor: pointer;
+}
+.app .app-menu .menu-block .menu__playList .menu__playList--label i {
+  font-size: 20px;
+  margin-right: 15px;
+}
+.app .app-menu .menu-block .menu__playList .menu__playList--item {
+  display: flex;
+  align-items: center;
+  padding: 8px 15px;
+  color: var(--none-active-color);
+  cursor: pointer;
+}
+.app .app-menu .menu-block .menu__playList .menu__playList--item i {
+  font-size: 18px;
+  margin-right: 10px;
+  display: block;
+}
+.app .app-menu .menu-block .menu__playList .menu__playList--item .active-icons {
+  display: none;
+}
+.app .app-menu .menu-block .menu__playList .menu__playList--item::after {
+  content: "";
+  display: block;
+  width: 10px;
+  height: 10px;
+  border: 2px solid red;
+  position: absolute;
+  left: 16px;
+  border-radius: 50%;
+}
+.app .app-menu .menu-block .menu__playList .active-menu {
+  color: var(--active-color);
+}
+.app .app-menu .menu-block .menu__playList .active-menu::after {
+  display: none;
+}
+.app .app-menu .menu-block .menu__song {
+  display: none;
+  width: 360px;
+  height: 400px;
+  overflow: hidden;
+  overflow-y: auto;
+}
+.app .app-menu .menu-block .menu__song::-webkit-scrollbar {
+  width: 5px;
+}
+.app .app-menu .menu-block .menu__song::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, var(--pink-color), var(--blue-color));
+  border-radius: 10px;
+}
+.app .app-menu .menu-block .menu__song::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+.app .app-menu .menu-block .menu__song .menu__song-all {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  cursor: pointer;
+}
+.app .app-menu .menu-block .menu__song .menu__song-all .active-icon {
+  display: none;
+}
+.app .app-menu .menu-block .menu__song .menu__song-all .menu__songs--number {
+  font-size: 15px;
+  padding: 0 10px;
+  color: var(--text-color);
+}
+.app .app-menu .menu-block .menu__song .menu__song-all .menu__songs--avatar {
+  width: 36px;
+  height: 36px;
+}
+.app .app-menu .menu-block .menu__song .menu__song-all .menu__songs--avatar img {
+  width: 100%;
+  border-radius: 3px;
+  margin-right: 10px;
+}
+.app .app-menu .menu-block .menu__song .menu__song-all .menu__song--names {
+  color: var(--text-color);
+  overflow: hidden;
+  margin-left: 15px;
+  flex-grow: 1;
+  padding: 3px 0;
+}
+.app .app-menu .menu-block .menu__song .menu__song-all .menu__song--names p {
+  font-size: 14px;
+  margin-bottom: 4px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.app .app-menu .menu-block .menu__song .menu__song-all .menu__song--names span {
+  font-size: 13px;
+  color: var(--sub-text-color);
+  white-space: nowrap;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.app .app-menu .menu-block .menu__song .menu__song-all .menu__songs--iconPlay {
+  margin-right: 10px;
+  color: var(--text-color);
+  font-size: 20px;
+}
+.app .app-menu .menu-block .menu__song .menu__song-all .menu__songs--iconPause {
+  margin-right: 10px;
+  color: var(--text-color);
+  font-size: 20px;
+}
+.app .app-menu .menu-block .menu__song .active {
+  background-color: rgba(255, 0, 0, 0.622);
+}
+.app .app-menu .menu-block .menu__song.menu__song-VN {
+  display: block;
+}
+.app .app-menu .menu-block .menu__song.menu__song-USUK {
+  display: none;
+}
+.app .app-menu .menu-block .menu__song.menu__song-EDM {
+  display: none;
+}
+.app .app-main {
+  position: relative;
+  max-width: 100%;
+  overflow: hidden;
+}
+.app .app-main .tab-main {
+  position: fixed;
+  top: 10%;
+  right: 10%;
+  z-index: 100000;
+  color: var(--text-color);
+  display: flex;
+  flex-direction: row;
+}
+.app .app-main .play-song {
+  background-color: #130c1c;
+  width: 100%;
+  height: 100px;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  padding: 5px 0;
+  cursor: pointer;
+  z-index: 1000;
+}
+.app .app-main .play-song .play__left {
+  width: 25%;
+  display: flex;
+  align-items: center;
+}
+.app .app-main .play-song .play__left .play__left--avatar {
+  margin-right: 15px;
+  width: 60px;
+  height: 60px;
+}
+.app .app-main .play-song .play__left .play__left--avatar img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+.app .app-main .play-song .play__left .play__left--song {
+  color: white;
+  font-weight: 600;
+  margin-bottom: 6px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.app .app-main .play-song .play__left .play__left--song .play__left--songs-name {
+  font-size: 14px;
+  padding: 10px 0;
+  text-align: center;
+  animation: textAnimation 3.5s infinite ease-in;
+}
+@keyframes textAnimation {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+.app .app-main .play-song .play__left .play__left--song .play__left--songs-author {
+  font-size: 13px;
+}
+.app .app-main .play-song .play__mid {
+  width: 50%;
+  justify-content: space-evenly;
+  padding: 0 10px;
+}
+.app .app-main .play-song .play__mid .play__mid--icon {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 0 10px;
+}
+.app .app-main .play-song .play__mid .play__mid--icon .play__mid--icon-item {
+  font-size: 20px;
+  color: #ffffff;
+}
+.app .app-main .play-song .play__mid .play__mid--icon .play__mid--icon-item .hide {
+  display: none;
+}
+.app .app-main .play-song .play__mid .play__mid--icon .play__mid--icon-play {
+  font-size: 32px;
+}
+.app .app-main .play-song .play__mid .play__mid--progress {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 10px;
+}
+.app .app-main .play-song .play__mid .play__mid--progress .play__mid--progress-timePlay {
+  display: flex;
+  margin-right: 15px;
+  color: #aaa8ae;
+}
+.app .app-main .play-song .play__mid .play__mid--progress .play__mid--progress-timeFull {
+  color: #ffffff;
+  margin-left: 15px;
+}
+.app .app-main .play-song .play__mid .play__mid--progress .play__mid--progress-timeProgress {
+  position: absolute;
+  width: 100%;
+  height: 5px;
+  background-color: rgb(90, 85, 97);
+  position: relative;
+  z-index: 1;
+}
+.app .app-main .play-song .play__mid .play__mid--progress .play__mid--progress-timeProgress .play__mid--progress-timeProgress-range {
+  width: 0;
+  height: 100%;
+  background-color: rgb(255, 255, 255);
+  z-index: 10;
+  position: absolute;
+}
+.app .app-main .play-song .play__mid .play__mid--progress .play__mid--progress-timeProgress .play__mid--progress-timeProgress-range::after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background-color: #ffffff;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 50%;
+  right: -5px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.app .app-main .play-song .play__right {
+  width: 200px;
+  position: relative;
+  margin-right: 30px;
+  height: 10px;
+  display: flex;
+  align-items: center;
+  left: 5%;
+}
+.app .app-main .play-song .play__right i {
+  margin-right: 5px;
+  font-size: 20px;
+  box-sizing: border-box;
+  position: absolute;
+  left: -30px;
+  color: white;
+}
+.app .app-main .play-song .play__right .hide {
+  display: none;
+}
+.app .app-main .play-song .play__right input {
+  position: absolute;
+  width: 60%;
+  height: 5px;
+}
+.app .app-main main {
+  position: relative;
+  display: block;
+  background-image: url(../img/bg_rose.png);
+  width: 100%;
+  height: 90%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: 100%;
+  overflow: hidden;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  background-color: var(--music-play-bg);
+}
+.app .app-main main::-webkit-scrollbar {
+  width: 0;
+}
+.app .app-main main header {
+  width: 100%;
+  height: 56px;
+  z-index: 10;
+  position: sticky;
+  top: 0;
+}
+.app .app-main main header .song-block nav {
+  max-width: 100%;
+  height: 56px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--primary-bg);
+}
+.app .app-main main header .song-block nav .nav__tabs a {
+  text-decoration: none;
+  font-size: 17px;
+  font-weight: 700;
+  margin: 0 10px;
+  padding: 5px;
+  color: rgb(222, 221, 221);
+}
+.app .app-main main header .song-block nav .nav__tabs a.active-tab {
+  color: var(--active-color);
+}
+.app .app-main main header .song-block nav .nav__menu1024 {
+  display: none;
+  color: white;
+  width: 50px;
+  line-height: 50px;
+  cursor: pointer;
+}
+.app .app-main main header .song-block nav .nav__menu1024 i {
+  font-size: 24px;
+}
+.app .app-main main header .song-block nav .nav__logo1024 {
+  display: none;
+  filter: hue-rotate(260deg);
+}
+.app .app-main main header .song-block nav .nav__logo1024 img {
+  width: 120px;
+}
+.app .app-main main header .song-block nav .width {
+  width: 33.3333%;
+  text-align: center;
+}
+.app .app-main main header .song-block nav .nav__search {
+  display: flex;
+}
+.app .app-main main header .song-block nav .nav__search i {
+  font-size: 20px;
+  color: white;
+}
+.app .app-main main header .song-block nav .nav__search i.active {
+  display: none;
+}
+.app .app-main main header .song-block nav .nav__search .nav__search--input {
+  position: relative;
+  transition: 0.6s;
+  width: 99%;
+  font-size: 16px;
+  outline: none;
+  margin-left: 10px;
+  padding: 0 10px;
+  border: none;
+  background: transparent;
+  color: white;
+}
+.app .app-main main header .song-block nav .nav__search .nav__search--input:focus ~ .seacrh__block {
+  display: block;
+}
+.app .app-main main header .song-block nav .nav__search .seacrh__block {
+  position: absolute;
+  color: rgb(0, 0, 0);
+  display: none;
+  text-align: left;
+  list-style-type: none;
+  margin-top: 50px;
+  max-height: 500px;
+  overflow: hidden;
+  overflow-y: auto;
+  background-color: #361b5e;
+}
+.app .app-main main header .song-block nav .nav__search .seacrh__block::-webkit-scrollbar {
+  width: 0;
+}
+.app .app-main main header .theme {
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+  z-index: 10000;
+  background-color: rgba(0, 0, 0, 0.24);
+  display: none;
+}
+.app .app-main main header .theme .theme__main {
+  position: relative;
+  margin: auto;
+  margin-top: 100px;
+  max-width: 60%;
+  max-height: 70%;
+  background-color: white;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+.app .app-main main header .theme .theme__main::-webkit-scrollbar {
+  width: 0;
+}
+.app .app-main main header .theme .theme__main .exit-theme {
+  position: fixed;
+  top: 50px;
+  right: 20%;
+  background-color: red;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+}
+.app .app-main main header .theme .theme__main .exit-theme i {
+  font-size: 28px;
+  color: var(--text-color);
+}
+.app .app-main main header .theme .theme__main .theme__list {
+  width: 100%;
+  height: auto;
+  word-wrap: wrap;
+  padding: 30px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+}
+.app .app-main main header .theme .theme__main .theme__list .theme__list--item {
+  display: flex;
+  border-radius: 10px;
+  width: 90%;
+  overflow: hidden;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+.app .app-main main header .theme .theme__main .theme__list .theme__list--item img {
+  width: 100%;
+  object-fit: cover;
+}
+.app .app-main main header .theme-icon {
+  width: 50px;
+  height: 50px;
+  background-color: red;
+  position: absolute;
+  right: 0;
+  top: 0;
+  text-align: center;
+  line-height: 50px;
+  color: var(--text-color);
+}
+.app .app-main main .main__home {
+  width: 100%;
+  position: relative;
+}
+.app .app-main main .main__home .main__home--heading {
+  width: 100%;
+  padding-left: 20px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.app .app-main main .main__home .main__home--heading h1 {
+  font-weight: 600;
+  font-size: 28px;
+  margin-bottom: 10px;
+  color: var(--text-color);
+}
+.app .app-main main .main__home .main__home--heading p {
+  width: 50%;
+  font-size: 14px;
+  padding-left: 8px;
+  margin-bottom: 10px;
+  color: var(--none-active-color);
+  font-weight: 500;
+}
+.app .app-main main .main__home .main__home--heading .home__btn {
+  display: flex;
+}
+.app .app-main main .main__home .main__home--heading .home__btn .home__heading--btn {
+  width: 120px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  border: none;
+  background-size: 300% 100%;
+  border-radius: 20px;
+  box-shadow: 0 1px 2px 0 rgba(65, 132, 234, 0.75);
+  transition: all 0.4s ease-in-out;
+  font-weight: 500;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.app .app-main main .main__home .main__home--heading .home__btn .home__heading--btn-play {
+  background-image: linear-gradient(to right, #25aae1, #4481eb, #04befe, #3f86ed);
+  margin-right: 12px;
+  color: var(--text-color);
+}
+.app .app-main main .main__home .main__home--heading .home__btn .home__heading--btn-fllow {
+  color: var(--active-color);
+  background: transparent;
+  border: 2px solid #36e2ec;
+}
+.app .app-main main .main__home .main__home--playList {
+  position: relative;
+}
+.app .app-main main .main__home .main__home--playList .main__home--playList-icon {
+  position: absolute;
+  top: 10%;
+  right: 5%;
+  color: var(--text-color);
+}
+.app .app-main main .main__home .main__home--playList .main__home--playList-icon .fa-arrow-left {
+  margin-right: 10px;
+}
+.app .app-main main .main__home .main__home--playList .main__home--playList-title {
+  padding: 0 16px;
+  font-size: 18px;
+  font-weight: 700;
+  margin-top: 15px;
+  color: var(--text-color);
+}
+.app .app-main main .main__home .main__home--playList-songs {
+  margin: 0 auto;
+  width: 98%;
+  height: auto;
+  overflow: auto;
+  scroll-behavior: smooth;
+  display: flex;
+  cursor: pointer;
+}
+.app .app-main main .main__home .main__home--playList-songs::-webkit-scrollbar {
+  width: 0;
+}
+.app .app-main main .main__home .main__home--playList-songs .main__home--playList-songs-item {
+  width: 160px;
+  max-height: 220px;
+  margin: 10px 30px 0 0;
+  position: relative;
+}
+.app .app-main main .main__home .main__home--playList-songs .main__home--playList-songs-item .main__home--playList-songs-img {
+  box-sizing: border-box;
+  overflow: hidden;
+  border-radius: 10px;
+  position: relative;
+}
+.app .app-main main .main__home .main__home--playList-songs .main__home--playList-songs-item .main__home--playList-songs-img .main__home--playList-songs-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  font-size: 30px;
+  color: white;
+  display: none;
+  transition: 0.5s;
+}
+.app .app-main main .main__home .main__home--playList-songs .main__home--playList-songs-item .main__home--playList-songs-img:hover .main__home--playList-songs-icon {
+  display: block;
+}
+.app .app-main main .main__home .main__home--playList-songs .main__home--playList-songs-item .main__home--playList-songs-img img {
+  width: 160px;
+  height: 140px;
+  object-fit: cover;
+  transition: 0.5s;
+  transform: scale(1.1);
+}
+.app .app-main main .main__home .main__home--playList-songs .main__home--playList-songs-item .main__home--playList-songs-img img:hover {
+  transform: scale(1.2);
+}
+.app .app-main main .main__home .main__home--playList-songs .main__home--playList-songs-item .main__home--playList-songs-title {
+  font-size: 14.5px;
+  font-weight: 700;
+  white-space: nowrap;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 4px;
+}
+.app .app-main main .main__home .main__home--playList-songs .main__home--playList-songs-item .main__home--playList-songs-title span {
+  color: var(--text-color);
+}
+.app .app-main main .main__home .main__home--playList-songs .main__home--playList-songs-item .main__home--playList-songs-singer {
+  margin: 5px 0;
+  font-size: 13px;
+  font-weight: 500;
+}
+.app .app-main main .main__home .main__home--playList-songs .main__home--playList-songs-item .main__home--playList-songs-singer span {
+  color: var(--sub-text-color);
+}
+.app .app-main main .main__home .main__home--songTopTitle {
+  padding: 0 16px;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-color);
+}
+.app .app-main main .main__home .main__home--songTop {
+  width: 98%;
+  height: auto;
+  margin: 0 auto;
+  display: flex;
+  overflow-x: auto;
+  cursor: pointer;
+}
+.app .app-main main .main__home .main__home--songTop::-webkit-scrollbar {
+  width: 0;
+}
+.app .app-main main .main__home .main__home--songTop .main__home--songTop-item {
+  width: 33.3333%;
+  flex-shrink: 0;
+  position: relative;
+  transition-property: transform;
+  display: flex;
+  background: var(--border-layout);
+  border-radius: 4px;
+  box-shadow: #424242 0px 2px 10px 0px;
+  margin: 10px 20px 0px 0px;
+  padding: 10px;
+}
+.app .app-main main .main__home .main__home--songTop .main__home--songTop-item .main__home--songTop-item-img {
+  width: 50%;
+  height: 120px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+}
+.app .app-main main .main__home .main__home--songTop .main__home--songTop-item .main__home--songTop-item-img img {
+  width: 100%;
+  height: 120px;
+}
+.app .app-main main .main__home .main__home--songTop .main__home--songTop-item .main__home--songTop-item-other {
+  width: 50%;
+  margin-left: 10px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-left: 10px;
+}
+.app .app-main main .main__home .main__home--songTop .main__home--songTop-item .main__home--songTop-item-other .main__home--songTop-item-name p {
+  font-weight: 700;
+  font-size: 20px;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-word;
+  color: var(--text-color);
+}
+.app .app-main main .main__home .main__home--songTop .main__home--songTop-item .main__home--songTop-item-other .main__home--songTop-item-name span {
+  font-weight: 600;
+  font-size: 14px;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-word;
+  color: var(--sub-text-color);
+  margin-top: 5px;
+}
+.app .app-main main .main__home .main__home--songTop .main__home--songTop-item .main__home--songTop-item-nambertric {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  color: var(--text-color);
+  font-size: 24px;
+}
+.app .app-main main .main__home .main__home--songTop .main__home--songTop-item .main__home--songTop-item-nambertric span {
+  display: block;
+}
+.app .app-main main .main__home .main__home--songTop .main__home--songTop-item .main__home--songTop-item-nambertric :first-child {
+  font-weight: 900;
+  font-size: 40px;
+  padding: 0%;
+  margin: 0%;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+.app .app-main main .main__home .main__home--songTop .main__home--songTop-item .main__home--songTop-item-nambertric :last-child {
+  font-weight: 600;
+  font-size: 6px;
+  margin: 0 0 4px 20px;
+}
+.app .app-main main .main__home .main__home--singerTop {
+  width: 98%;
+  height: auto;
+  margin: 0 auto;
+  overflow: hidden;
+  margin-top: 20px;
+  position: relative;
+  cursor: pointer;
+}
+.app .app-main main .main__home .main__home--singerTop .main__home--singerTop--item {
+  overflow-x: auto;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  scroll-behavior: smooth;
+}
+.app .app-main main .main__home .main__home--singerTop .main__home--singerTop--item .main__home--singerTop--item_singers {
+  width: 120px;
+  height: 150px;
+  position: relative;
+  flex-shrink: 0;
+  margin: 15px 25px 15px 0;
+  text-align: center;
+}
+.app .app-main main .main__home .main__home--singerTop .main__home--singerTop--item .main__home--singerTop--item_singers img {
+  width: 100%;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.app .app-main main .main__home .main__home--singerTop .main__home--singerTop--item .main__home--singerTop--item_singers h4 {
+  color: var(--text-color);
+  font-size: 15px;
+  margin-top: 5px;
+}
+.app .app-main main .main__home .main__home--singerTop .main__home--singerTop--heading {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-color);
+}
+.app .app-main main .main__home .main__home--singerTop .main__home--singerTop--icon {
+  position: absolute;
+  top: 10px;
+  right: 5%;
+  color: var(--text-color);
+}
+.app .app-main main .main__home .main__home--singerTop .main__home--singerTop--icon .fa-arrow-left {
+  margin-right: 10px;
+}
+.app .app-main main .main__home .main__home--zingChart {
+  width: 98%;
+  height: auto;
+  margin: 0 auto;
+  overflow: hidden;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.app .app-main main .main__home .main__home--zingChart .main__home--zingChart-item {
+  display: flex;
+  flex-direction: column;
+  overflow-x: auto;
+  margin-left: 10px;
+  margin-top: 20px;
+  cursor: pointer;
+  color: var(--text-color);
+}
+.app .app-main main .main__home .main__home--zingChart .main__home--zingChart-item::-webkit-scrollbar {
+  width: 0;
+}
+.app .app-main main .main__home .main__home--zingChart .main__home--zingChart-item .main__home--zingChart-items {
+  position: relative;
+  width: 80%;
+  padding: 10px;
+  height: auto;
+  display: flex;
+  align-items: center;
+  margin: 10px 5px;
+  border-radius: 15px;
+}
+.app .app-main main .main__home .main__home--zingChart .main__home--zingChart-item .main__home--zingChart-items .zingChart-title {
+  margin-right: 30px;
+}
+.app .app-main main .main__home .main__home--zingChart .main__home--zingChart-item .main__home--zingChart-items .zingChart-title h3 {
+  font-weight: 600;
+  font-size: 18px;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-word;
+  margin-bottom: 10px;
+}
+.app .app-main main .main__home .main__home--zingChart .main__home--zingChart-item .main__home--zingChart-items .zingChart-view h4 {
+  font-size: 18px;
+  font-weight: 700;
+}
+.app .app-main main .main__home .main__home--zingChart .main__home--zingChart-item .main__home--zingChart-items:nth-child(1), .app .app-main main .main__home .main__home--zingChart .main__home--zingChart-item .main__home--zingChart-items:nth-child(2), .app .app-main main .main__home .main__home--zingChart .main__home--zingChart-item .main__home--zingChart-items:nth-child(3) {
+  background-color: rgba(155, 2, 40, 0.537254902);
+}
+.app .app-main main .main__home .main__home--zingChart .main__home--zingChart-item .main__home--zingChart-items:nth-child(4), .app .app-main main .main__home .main__home--zingChart .main__home--zingChart-item .main__home--zingChart-items:nth-child(5), .app .app-main main .main__home .main__home--zingChart .main__home--zingChart-item .main__home--zingChart-items:nth-child(6) {
+  background-color: rgba(131, 123, 34, 0.5215686275);
+}
+.app .app-main main .main__home .main__home--zingChart .main__home--zingChart-item .main__home--zingChart-items:nth-child(7), .app .app-main main .main__home .main__home--zingChart .main__home--zingChart-item .main__home--zingChart-items:nth-child(8), .app .app-main main .main__home .main__home--zingChart .main__home--zingChart-item .main__home--zingChart-items:nth-child(9), .app .app-main main .main__home .main__home--zingChart .main__home--zingChart-item .main__home--zingChart-items:nth-child(10) {
+  background-color: rgba(21, 6, 151, 0.5490196078);
+}
+.app .app-main main .main__home .main__home--zingChart .main__home--zingChart-item .main__home--zingChart-items .zingChart-id {
+  font-family: "Bungee Outline", cursive;
+  font-size: 28px;
+  margin-right: 10px;
+}
+.app .app-main main .main__home .main__home--zingChart .main__home--zingChart-item .main__home--zingChart-items .zingChart-avt {
+  width: 50px;
+  height: 50px;
+  overflow: hidden;
+  margin-right: 20px;
+}
+.app .app-main main .main__home .main__home--zingChart .main__home--zingChart-item .main__home--zingChart-items .zingChart-avt img {
+  width: 100%;
+  object-fit: cover;
+}
+.app .app-main main .main__home .main__home--zingChart .main__home--zingChart-item .main__home--zingChart-items .zingChart-view {
+  position: absolute;
+  right: 10px;
+}
+.app .app-main main .main__home .main__home--zingChart .main__home--zingChart-title {
+  color: var(--text-color);
+}
+.app .app-main main .active {
+  display: none;
+}
+.app .app-main main footer {
+  width: 1005;
+  height: auto;
+  margin: 0 auto;
+  margin-top: 50px;
+  z-index: 100;
+  top: 0;
+  font-weight: 500;
+  color: white;
+  background-color: var(--primary-bg);
+  padding: 50px 0;
+  cursor: pointer;
+}
+.app .app-main main footer .footer-first {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.app .app-main main footer .footer-first img {
+  margin-right: 10px;
+}
+.app .app-main main footer .footer-second ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  list-style-type: none;
+}
+.app .app-main main footer .footer-second ul li {
+  display: inline-block;
+  margin: 5px;
+  padding: 5px;
+}
+.app .dark {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  display: none;
+  background-color: rgba(0, 0, 0, 0.488);
+  z-index: 90;
+}
+
+/*# sourceMappingURL=style.css.map */

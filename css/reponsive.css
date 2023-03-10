@@ -1,0 +1,90 @@
+@media only screen and (max-width: 1024px) {
+  .app {
+    grid-template-columns: 1fr;
+  }
+  .app .app-menu {
+    position: fixed;
+    width: auto;
+    top: 0;
+    left: -200%;
+    z-index: 100;
+    transition: 0.3s;
+    z-index: 10000;
+  }
+  .app .app-menu .menu-block .exit-menu {
+    display: block;
+  }
+  .app .app-main {
+    width: 100%;
+    display: block;
+  }
+  .app .app-main .play-song .play__left {
+    width: 30%;
+  }
+  .app .app-main .play-song .play__mid {
+    width: 70%;
+  }
+  .app .app-main .play-song .play__right {
+    display: none;
+  }
+  .app .app-main main .main__home .main__home--songTop .main__home--songTop-item {
+    width: 50%;
+    padding: 0;
+  }
+  .app .app-main main .main__home .main__home--songTop .main__home--songTop-item .main__home--songTop-item-nambertric :last-child {
+    font-size: 14px;
+  }
+  .app .app-main main .main__home .main__home--zingChart .main__home--zingChart-item .main__home--zingChart-items {
+    width: 98%;
+  }
+  .app .app-main main header .song-block nav {
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  .app .app-main main header .song-block nav .nav__tabs {
+    display: none;
+  }
+  .app .app-main main header .song-block nav .nav__menu1024 {
+    display: block;
+  }
+  .app .app-main main header .song-block nav .nav__logo1024 {
+    display: block;
+  }
+  .app .app-main main header .song-block nav .nav__search .nav__search--input {
+    transition: 0.6s;
+    width: 0;
+  }
+  .app .app-main main header .theme .theme__main {
+    max-width: 90%;
+  }
+}
+@media only screen and (max-width: 740px) {
+  .app .app-menu {
+    left: -200%;
+  }
+  .app .app-main main .main__home .main__home--songTop .main__home--songTop-item {
+    width: 100%;
+  }
+  .app .app-main main .main__home .main__home--zingChart .main__home--zingChart-item {
+    margin: 0;
+  }
+  .app .app-main main header .song-block nav .nav__logo1024 {
+    display: none;
+  }
+  .app .app-main main header .song-block nav .width {
+    width: 50%;
+  }
+  .app .app-main main footer .footer-second ul {
+    flex-direction: column;
+  }
+}
+@media only screen and (max-width: 400px) {
+  .app .app-menu {
+    padding: 0;
+  }
+  .app .app-menu .menu-block {
+    padding: 0;
+  }
+}
+
+/*# sourceMappingURL=reponsive.css.map */

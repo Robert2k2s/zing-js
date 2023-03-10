@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/reponsive.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bungee+Outline&family=Oleo+Script+Swash+Caps:wght@400;700&family=Source+Sans+Pro:ital,wght@0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <title>PTC Zing-Mp3</title>
+  </head>
+  <body>
+    <div class="app">
+      <!-- app menu -->
+      <div class="app-menu">
+        <!-- menu block -->
+        <div class="menu-block .active-menu">
+          <div class="exit-menu">
+            <i class="fa-solid fa-xmark"></i>
+          </div>
+          <div class="menu__logos">
+            <img
+              src="./img/icon.svg"
+              alt="icon-zing-mp3"
+              class="menu__logos--icon"
+            />
+            <img
+              src="./img/logo.svg"
+              alt="logo-zing-mp3"
+              class="menu__logos--logo"
+            />
+          </div>
+          <!-- menu play list -->
+          <div class="menu__playList">
+            <div class="menu__playList--label">
+              <i class="fa-solid fa-star"></i>
+              <h3>Top Song</h3>
+            </div>
+            <div class="menu__playList--item top-songs-VN active-menu">
+              <i class="fa-solid fa-music"></i>
+              <h4>VietNam</h4>
+            </div>
+            <div class="menu__playList--item top-songs-UK-US">
+              <i class="fa-solid fa-music active-icons"></i>
+              <h4>UK-US</h4>
+            </div>
+            <div class="menu__playList--item top-songs-EDM">
+              <i class="fa-solid fa-music active-icons"></i>
+              <h4>EDM</h4>
+            </div>
+          </div>
+          <!-- menu song top vn -->
+          <div class="menu__song menu__song-VN active-song">
+            <!-- <div class="menu__song-list">
+              <div class="menu__songs--number">
+                <span>01</span>
+              </div>
+              <div class="menu__songs--avatar">
+                <img
+                  src="https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/b/5/9/e/b59e8bb877cac56eadf7b948f3164614.jpg"
+                  alt=""
+                />
+              </div>
+              <div class="menu__song--names">
+                <p>Đừng lo nhé có anh đây</p>
+                <span>Thiên Tú</span>
+              </div>
+              <div class="menu__songs--iconPlay">
+                <i class="fa-solid fa-circle-play"></i>
+              </div>
+            </div> -->
+          </div>
+          <!-- menu song top us uk -->
+          <div class="menu__song menu__song-USUK"></div>
+          <div class="menu__song menu__song-EDM"></div>
+        </div>
+      </div>
+      <!-- app main -->
+      <div class="app-main">
+        <!-- tab main -->
+        <div class="tab-main">
+          <div class="tab-main">home</div>
+          <div class="tab-individual">Individual</div>
+          <div class="tab-discover">Discover</div>
+        </div>
+        <!-- header -->
+
+        <!-- main-play -->
+        <section class="play-song">
+          <!-- play left -->
+          <div class="play__left play__all">
+            <div class="play__left--avatar">
+              <img src="./img/icon.svg" alt="" />
+            </div>
+            <div class="play__left--song">
+              <div class="play__left--songs-name">
+                <p></p>
+              </div>
+              <div class="play__left--songs-author">
+                <span></span>
+              </div>
+            </div>
+          </div>
+          <!-- play mid -->
+          <div class="play__mid">
+            <div class="play__mid--icon">
+              <div class="play__mid--icon-item play__mid--icon-loadFrist">
+                <i class="fa-solid fa-rotate-right"></i>
+              </div>
+              <div class="play__mid--icon-item play__mid--icon-prev">
+                <i class="fa-solid fa-angles-left"></i>
+              </div>
+              <div class="play__mid--icon-item play__mid--icon-play">
+                <i class="fa-regular fa-circle-play play"></i>
+                <i class="fa-regular fa-circle-pause pause hide"></i>
+              </div>
+              <div class="play__mid--icon-item play__mid--icon-next">
+                <i class="fa-solid fa-angles-right"></i>
+              </div>
+              <div class="play__mid--icon-item play__mid--icon-randomSong">
+                <i class="fa-solid fa-shuffle"></i>
+              </div>
+            </div>
+            <audio class="audio" src=""></audio>
+            <!-- play procgess -->
+            <div class="play__mid--progress">
+              <div class="play__mid--progress-timePlay">
+                <span class="TimeGo">00:00</span>
+              </div>
+              <div class="play__mid--progress-timeProgress">
+                <div class="play__mid--progress-timeProgress-range"></div>
+              </div>
+              <div class="play__mid--progress-timeFull">00:00</div>
+            </div>
+          </div>
+          <!-- play right -->
+          <div class="play__right play__all">
+            <!-- <div class="hide"> -->
+            <i class="fa-solid fa-volume-high"></i>
+            <i class="fa-solid fa-volume-xmark hide"></i>
+            <!-- </div> -->
+
+            <input
+              id="volume"
+              class="volume"
+              type="range"
+              value="30"
+              step="1"
+              min="0"
+              max="100"
+            />
+          </div>
+        </section>
+        <!-- main -->
+        <main>
+          <!-- header -->
+          <header>
+            <!-- song block -->
+            <div class="song-block">
+              <nav>
+                <div class="nav__tabs">
+                  <a class="active-tab" href="#">Home</a>
+                  <a class="" href="#">Individual</a>
+                  <a class="" href="#">Discover</a>
+                </div>
+                <!-- menu media 1024px -->
+                <div class="nav__menu1024 width">
+                  <i class="fa-solid fa-music"></i>
+                </div>
+                <!-- logo media 1024px -->
+                <div class="nav__logo1024 width">
+                  <img src="./img/logo.svg" alt="" />
+                </div>
+                <div class="nav__search width">
+                  <div class="nav__search--icon">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <i class="fa-solid fa-xmark active"></i>
+                  </div>
+                  <input
+                    class="nav__search--input"
+                    type="text"
+                    placeholder="Your search my song..."
+                  />
+                  <div class="seacrh__block">
+                    <ul></ul>
+                  </div>
+                </div>
+                <div class="nav__setting">
+                  <div class="nav__setting--theme"></div>
+                  <div class="nav__setting--icon"></div>
+                  <div class="nav__setting--avt"></div>
+                </div>
+              </nav>
+            </div>
+            <!-- theme -->
+            <div class="theme">
+              <div class="theme__main">
+                <div class="exit-theme">
+                  <i class="fa-solid fa-xmark"></i>
+                </div>
+                <div class="theme__list">
+                  <div class="theme__list--item">
+                    <img src="./img/bg_rose.png" alt="" />
+                  </div>
+                  <div class="theme__list--item">
+                    <img src="./img/emgaimua.png" alt="" />
+                  </div>
+                  <div class="theme__list--item">
+                    <img src="./img/ruri2.png" alt="" />
+                  </div>
+                  <!--  -->
+                  <div class="theme__list--item">
+                    <img src="./img/gai1.png" alt="" />
+                  </div>
+                  <div class="theme__list--item">
+                    <img src="./img/gai2.png" alt="" />
+                  </div>
+                  <div class="theme__list--item">
+                    <img src="./img/gai3.png" alt="" />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- theme icon -->
+            <div class="theme-icon">
+              <i class="fa-solid fa-shirt"></i>
+            </div>
+          </header>
+          <!-- main home................. -->
+          <div class="main__home">
+            <div class="main__home--heading">
+              <h1>Alan Walker - End of Time</h1>
+              <p>
+                You were the shadow to my light Did you feel us Another start
+                You fade Away afraid our aim is out of sight Wanna see us Alive
+              </p>
+              <div class="home__btn">
+                <button
+                  class="home__heading--btn home__heading--btn-play"
+                  type="button"
+                >
+                  Play
+                </button>
+                <button
+                  class="home__heading--btn home__heading--btn-fllow"
+                  type="button"
+                >
+                  Follow
+                </button>
+              </div>
+            </div>
+            <div class="main__home--playList">
+              <div class="main__home--playList-title">
+                <h3>Maybe you want to hear</h3>
+              </div>
+              <div class="main__home--playList-icon">
+                <i class="fa-solid fa-arrow-left"></i>
+                <i class="fa-solid fa-arrow-right"></i>
+              </div>
+            </div>
+            <div class="main__home--playList-songs"></div>
+            <div class="main__home--songTopTitle">
+              <h3>New Music</h3>
+            </div>
+            <div class="main__home--songTop"></div>
+            <div class="main__home--singerTop">
+              <div class="main__home--singerTop--heading">
+                <h3>Top Singers</h3>
+              </div>
+              <div class="main__home--singerTop--icon">
+                <i class="fa-solid fa-arrow-left"></i>
+                <i class="fa-solid fa-arrow-right"></i>
+              </div>
+              <div class="main__home--singerTop--item"></div>
+            </div>
+            <div class="main__home--zingChart">
+              <div class="main__home--zingChart-title">
+                <h3>ZingChart Top</h3>
+              </div>
+
+              <div class="main__home--zingChart-item"></div>
+            </div>
+          </div>
+          <!-- main Individual -->
+          <div class="main__individual"></div>
+          <!-- main Discover -->
+          <div class="main__discover"></div>
+          <!-- footer -->
+          <footer>
+            <div class="footer-first">
+              <div class="footer-first-icon">
+                <img src="./img/icon.svg" alt="" />
+              </div>
+              <div class="footer-first-title">
+                <p>This is a product of Robert Phan</p>
+              </div>
+            </div>
+            <div class="footer-second">
+              <ul>
+                <li class="text">Introduce</li>
+                <li class="text">Contact</li>
+                <li class="text">Advertisement</li>
+                <li class="text">Feedback</li>
+                <li class="text">Terms of use</li>
+              </ul>
+            </div>
+            <div class="footer-third"></div>
+          </footer>
+        </main>
+      </div>
+      <div class="dark"></div>
+    </div>
+    <script src="/js/style.js"></script>
+  </body>
+</html>

@@ -80,8 +80,8 @@ const menuSongEDM = $(".menu__song-EDM");
 const menuSongsList = $(".menu__song-list");
 
 // tab
-const individual = $(".tab-individual");
-const discover = $(".tab-discover");
+const individual = $(".individual");
+const discover = $(".discover");
 
 // const getData = (api) => {
 //   return new Promise((resolve, reject) => {

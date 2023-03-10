@@ -79,6 +79,10 @@ const menuSongUSUK = $(".menu__song-USUK");
 const menuSongEDM = $(".menu__song-EDM");
 const menuSongsList = $(".menu__song-list");
 
+// tab
+const individual = $(".tab-individual");
+const discover = $(".tab-discover");
+
 // const getData = (api) => {
 //   return new Promise((resolve, reject) => {
 //     var request = new XMLHttpRequest();
@@ -655,6 +659,14 @@ const app = {
         searchSongs.appendChild(li);
       });
     });
+
+    //tab nav
+    discover.onclick = function () {
+      alert("tính năng chưa hoàn thiện xin thông cảm");
+    };
+    individual.onclick = function () {
+      alert("tính năng chưa hoàn thiện xin thông cảm");
+    };
 
     // let filteredSongs = combinedArray.filter((song) =>
     //   song.name.toLowerCase().includes(keyword)
